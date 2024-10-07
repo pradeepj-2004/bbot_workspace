@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<robot name="bbot_new" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<gazebo reference="base_link">
+  <material>Gazebo/Silver</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="lidar">
+  <material>Gazebo/Black</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="camera">
+  <material>Gazebo/Red</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="rightwheel">
+  <material>Gazebo/Black</material>
+  <mu1>1</mu1>
+  <mu2>1</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="leftwheel">
+  <material>Gazebo/Black</material>
+  <mu1>1</mu1>
+  <mu2>1</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<!-- <gazebo reference="caster_wheel_right">
+  <material>Gazebo/Black</material>
+  <mu1>0.0001</mu1>
+  <mu2>0.0001</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="caster_wheel_left">
+  <material>Gazebo/Black</material>
+  <mu1>0.0001</mu1>
+  <mu2>0.0001</mu2>
+  <self_collide>true</self_collide>
+</gazebo> -->
+
+</robot>

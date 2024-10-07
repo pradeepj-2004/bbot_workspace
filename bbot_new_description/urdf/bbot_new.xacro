@@ -1,0 +1,122 @@
+<?xml version="1.0" ?>
+<robot name="bbot_new" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find bbot_new_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find bbot_new_description)/urdf/ros2_control.xacro" />
+
+<link name="base_footprint" />
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.006057605134441126 -0.00018111500705384267 0.10888749093150545" rpy="0 0 0"/>
+    <mass value="1.049122069689706"/>
+    <inertia ixx="0.006186" iyy="0.006006" izz="0.00631" ixy="-0.0" iyz="0.0" ixz="-0.000632"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bbot_new_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bbot_new_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar">
+  <inertial>
+    <origin xyz="-3.6197078243972464e-07 -1.1500705524792785e-07 0.007500311251273456" rpy="0 0 0"/>
+    <mass value="0.02686061718819272"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="5e-06" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.000257 0.000181 -0.193407" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bbot_new_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.000257 0.000181 -0.193407" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bbot_new_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rightwheel">
+  <inertial>
+    <origin xyz="-3.6279034571623514e-07 -0.012500115007057472 3.1181752010306374e-07" rpy="0 0 0"/>
+    <mass value="0.11821469543761899"/>
+    <inertia ixx="3.7e-05" iyy="6.2e-05" izz="3.7e-05" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.054743 0.112681 -0.038407" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bbot_new_description)/meshes/rightwheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.054743 0.112681 -0.038407" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bbot_new_description)/meshes/rightwheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="leftwheel">
+  <inertial>
+    <origin xyz="-3.627903472150362e-07 0.012499884992944452 3.118175187846739e-07" rpy="0 0 0"/>
+    <mass value="0.11821469543761903"/>
+    <inertia ixx="3.7e-05" iyy="6.2e-05" izz="3.7e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.054743 -0.112319 -0.038407" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bbot_new_description)/meshes/leftwheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.054743 -0.112319 -0.038407" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find bbot_new_description)/meshes/leftwheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+
+<joint name="base_basefootprint_joint" type="fixed">
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="base_footprint"/>
+</joint>
+
+
+<joint name="base_lidar_joint" type="fixed">
+  <origin xyz="0.000257 -0.000181 0.194407" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="lidar"/>
+</joint>
+
+
+<joint name="base_rightwheel_joint" type="continuous">
+  <origin xyz="-0.054743 -0.112681 0.038407" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="rightwheel"/>
+  <axis xyz="0 1 0"/>
+</joint>
+
+<joint name="base_leftwheel_joint" type="continuous">
+  <origin xyz="-0.054743 0.112319 0.038407" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="leftwheel"/>
+  <axis xyz="0 1 0"/>
+</joint>
+
+</robot>

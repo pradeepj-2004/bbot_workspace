@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+        <ros2_control name="RealBbot" type="system">
+            <hardware>
+                <plugin>bbot_hardware/BbotHardware</plugin>
+                <param name="left_wheel_name">base_leftwheel_joint</param>
+                <param name="right_wheel_name">base_rightwheel_joint</param>
+                <param name="loop_rate">30</param>
+                <param name="device">/dev/ttyUSB0</param>
+                <param name="baud_rate">115200</param>
+                <param name="timeout_ms">1000</param>
+                <param name="enc_counts_per_rev">205</param>
+                <!-- <param name="pid_p">10</param>
+                <param name="pid_d">0.1</param>
+                <param name="pid_i">0.01</param>
+                <param name="pid_o">1</param> -->
+            </hardware>
+            <joint name="base_leftwheel_joint">
+                <command_interface name="velocity">
+                    <param name="min">-10</param>
+                    <param name="max">10</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="base_rightwheel_joint">
+                <command_interface name="velocity">
+                    <param name="min">-10</param>
+                    <param name="max">10</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+        </ros2_control>
+
+    <!-- <gazebo>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+            <parameters>$(find bbot_new_description)/config/my_controllers.yaml</parameters>
+            <parameters>$(find bbot_new_description)/config/gaz_ros2_ctl_use_sim.yaml</parameters>
+        </plugin>
+    </gazebo> -->
+
+</robot>
